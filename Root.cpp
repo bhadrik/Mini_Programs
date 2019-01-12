@@ -1,41 +1,40 @@
 #include <iostream>
-#include<conio.h>
 using namespace std;
 
 // Function declaration
 void initial ();
 void cal(float, float);
-float fun(float);
 void print();
 
-//Globle variable declaration
-float i=0,x0,x1;
-float k=0;
-float m;
+//Global variable declaration
+float i=0,x0,x1,k=0,m;
 int val=1;
-/////////////////////////////////////
+
+//Function to find root
+float fun(float x){
+	return(x*x*x-5*x+3); //function f(x)=x³-5x+3
+}
+
 int main(){
     initial();
-    getch();
 }
-////////////////////////////////////
-void initial(){
-    get();
+
+void initial(){ // Initial function finds initial root of function;
 	if(fun(0)>0){
-			for(;;){
-				if(fun(i)<0)
-					break;
-				else
-					i++;
-			}
+		for(;;){
+			if(fun(i)<0)
+				break;
+			else
+				i++;
+		}
 	}
 	else{
-			for(;;){
-				if(fun(i)>0)
-					break;
-				else
-					i++;
-			}
+		for(;;){
+			if(fun(i)>0)
+				break;
+			else
+				i++;
+		}
 	}
 	x1=i--;
 	x0=i;
@@ -46,7 +45,8 @@ void initial(){
 	else
 		cal(x1,x0);
 }
-//#####################################
+
+//Engine of code
 void cal(float x, float y){
 	m=k;
 	k=(x+y)/2;
@@ -62,12 +62,8 @@ void cal(float x, float y){
 	else
 		cal(k,y);
 }
-//#######################################
+
 void print(){
     cout<<"Iteration:"<<val<<" X"<<val+1<<" = "<<k<<endl;
     val++;
-}
-//########################################
-float fun(float x){
-	return(fun_str); //function f(x)=x³-5x+3
 }
