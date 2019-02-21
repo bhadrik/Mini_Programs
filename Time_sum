@@ -1,37 +1,54 @@
 #include<iostream>
-#include<cmath>
+
 using namespace std;
 
 class Time{
+	
 	int hour, min;
+
 public:
 	void input(){
+		
 		cout<<"Enter hour: ";
 		cin>>hour;
-		cout<<"Enter minuit: ";
+		
+		cout<<"Enter minute: ";
 		cin>>min;
+		
 	}
+
 	friend void sum_time(Time,Time);
 };
 
+
 void sum_time(Time t1, Time t2){
-	int h,m1=1;
-	float m;
+	
+	int h,m;
+	
 	h = t1.hour+t2.hour;
+	
 	m=t1.min + t2.min;
+
 	if(m>59){
-		m=(float)m/60;
-		h = h+(int)m;
-		m=((float)m-(int)m);
-		m1=ceil(m*60.0);
+		
+		h = h + m/60;
+		
+		m = m%60;
+		
 	}
-	cout<<"Sum of time: "<<h<<"hour "<<m1<<"Minutes";
+
+	cout<<"Sum of time: "<<h<<"hour "<<m<<"Minutes";
+
 }
 
 int main(){
+	
 	Time t1 ;
 	Time t2;
+
 	t1.input();
 	t2.input();
+
 	sum_time(t1,t2);
+	return 0;
 }
